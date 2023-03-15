@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      enabled: true
+      charset: utf8
+      force: true
+spring:
+  servlet:
+    # 配置SpringMVC文件上传限制，默认1M。注意MB要大写，不然报错。SpringBoot版本不同，配置项不同
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  application:
+    #应用的名称，可选
+    name: ###
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/smart_pole?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 12345
+#  redis:
+#    host: localhost
+#    port: 6379
+#    #password: 123456
+#    database: 0 #操作的是0号数据库
+#    jedis:
+#      #Redis连接池配置
+#      pool:
+#        max-active: 8 #最大连接数
+#        max-wait: 1ms #连接池最大阻塞等待时间
+#        max-idle: 4 #连接池中的最大空闲连接
+#        min-idle: 0 #连接池中的最小空闲连接
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+
