@@ -44,8 +44,6 @@ public class ClientRecvThread implements Runnable {
     @Autowired()
     public SocketDataService socketDataService;
 
-    @Autowired
-    private ApplicationContext applicationContext;
     @Override
     public void run() {
         //线程终止条件： 设置标志位为 true or socket 已关闭
@@ -73,17 +71,9 @@ public class ClientRecvThread implements Runnable {
                 //将socket信息写入日志中
                 SocketData socketData = new SocketData();
                 socketData.setSocket(String.valueOf(this.socket));
-                socketData.setText(hexStr);
+                socketData.setText(hexStr.toUpperCase());
                 socketData.setTime(LocalDateTime.now());
-
-                System.out.println(applicationContext.getBeanDefinitionNames());
-
                 socketDataService.save(socketData);
-//                ApplicationContext context = new AnnotationConfigApplicationContext(SocketdataConfiguration.class);
-//                SocketdataConfiguration myBean = context.getBean("socketDataService1",SocketdataConfiguration.class);
-//                System.out.println(myBean);
-
-
 
             }
         } catch (IOException e) {

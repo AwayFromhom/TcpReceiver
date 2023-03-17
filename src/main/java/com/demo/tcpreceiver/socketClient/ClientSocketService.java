@@ -56,7 +56,8 @@ public class ClientSocketService implements InitializingBean {
                     //socket = SocketUtil.createClientSocket("127.0.0.1", 9999);
                     socket = SocketUtil.createClientSocket(host, port);
                     log.info("客户端 socket 在[{}]连接正常", port);
-                    ClientRecvThread recvThread = new ClientRecvThread(socket);
+                    //new出来的对象，要让spring帮你注入
+                    ClientRecvThread recvThread = ApplicationContextUtil.autowire(new ClientRecvThread(socket));
                     new Thread(recvThread).start();
                     ClientHeartBeatThread heartBeatThread = new ClientHeartBeatThread(socket, socketHeartIntervalTime, lockObject);
                     new Thread(heartBeatThread).start();
