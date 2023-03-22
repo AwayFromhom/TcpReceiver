@@ -1,6 +1,7 @@
-package com.demo.tcpreceiver.socketClient;
+package com.demo.tcpreceiver.service.socketClient;
 
 
+import com.demo.tcpreceiver.configuration.ApplicationContextUtil;
 import com.demo.tcpreceiver.core.util.SocketUtil;
 
 import org.slf4j.Logger;
@@ -48,12 +49,14 @@ public class ClientSocketService implements InitializingBean {
     /**
      * 启动服务
      */
+
     public void start(){
+
+
         Thread socketServiceThread = new Thread(() -> {
             while (true) {
                 try {
                     //尝试重新建立连接
-                    //socket = SocketUtil.createClientSocket("127.0.0.1", 9999);
                     socket = SocketUtil.createClientSocket(host, port);
                     log.info("客户端 socket 在[{}]连接正常", port);
                     //new出来的对象，要让spring帮你注入
@@ -96,7 +99,6 @@ public class ClientSocketService implements InitializingBean {
         socketServiceThread.setName("socket client main thread");
         socketServiceThread.start();
     }
-
     public Socket getSocket() {
         if (socket != null && !socket.isClosed()) {
             return socket;

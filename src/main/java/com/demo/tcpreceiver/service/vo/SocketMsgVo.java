@@ -1,4 +1,4 @@
-package com.demo.tcpreceiver.vo;
+package com.demo.tcpreceiver.service.vo;
 
 import java.util.Arrays;
 

@@ -1,9 +1,9 @@
-package com.demo.tcpreceiver.socketClient;
+package com.demo.tcpreceiver.service.socketClient;
 
 import com.demo.tcpreceiver.core.constant.ReceiveDataFrameConstant;
 import com.demo.tcpreceiver.core.util.SocketUtil;
 import com.demo.tcpreceiver.core.util.StreamUtil;
-import com.demo.tcpreceiver.vo.SocketMsgVo;
+import com.demo.tcpreceiver.service.vo.SocketMsgVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

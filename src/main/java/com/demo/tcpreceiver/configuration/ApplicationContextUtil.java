@@ -1,4 +1,4 @@
-package com.demo.tcpreceiver.socketClient;
+package com.demo.tcpreceiver.configuration;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
