@@ -1,9 +1,11 @@
-package com.demo.tcpreceiver.service.socketClient;
+package com.demo.tcpreceiver.TCPservice.socketClient;
 
-import com.demo.tcpreceiver.core.constant.ReceiveDataFrameConstant;
-import com.demo.tcpreceiver.core.util.SocketUtil;
-import com.demo.tcpreceiver.core.util.StreamUtil;
-import com.demo.tcpreceiver.service.vo.SocketMsgVo;
+
+import com.demo.tcpreceiver.TCPservice.constant.ReceiveDataFrameDemoConstant;
+import com.demo.tcpreceiver.TCPservice.util.SocketUtil;
+import com.demo.tcpreceiver.TCPservice.util.StreamUtil;
+import com.demo.tcpreceiver.TCPservice.vo.SocketMsgDemo;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,13 +43,20 @@ public class ClientHeartBeatThread implements Runnable {
             dataOutputStream = new DataOutputStream(outputStream);
             //客户端心跳检测
             while (!this.isStop && !socket.isClosed()) {
-                SocketMsgVo msgDataVo = new SocketMsgVo();
-                msgDataVo.setFrameHeader(ReceiveDataFrameConstant.RECEIVE_FRAME_HEADER);
-                msgDataVo.setLen(0);
-                msgDataVo.setBody(null);
-                msgDataVo.setFrameTail(ReceiveDataFrameConstant.RECEIVE_FRAME_TAIL);
-                if (msgDataVo != null) {
-                    SocketUtil.writeMsgData(dataOutputStream, msgDataVo);
+                SocketMsgDemo msgDataDemo = new SocketMsgDemo();
+                msgDataDemo.setMessageHeader(ReceiveDataFrameDemoConstant.RECEIVE_FRAME_HEADER);
+
+                msgDataDemo.setMessageLength(ReceiveDataFrameDemoConstant.RECEIVE_DOUBLE_BYTE);
+                msgDataDemo.setStatusMonitoringDeviceID(ReceiveDataFrameDemoConstant.RECEIVE_SEVENTEEN_BYTE);
+                msgDataDemo.setFrameType(ReceiveDataFrameDemoConstant.RECEIVE_ONE_BYTE);
+                msgDataDemo.setMessagetype(ReceiveDataFrameDemoConstant.RECEIVE_BEAT_BYTE);
+                msgDataDemo.setFrameSequenceNumber(ReceiveDataFrameDemoConstant.RECEIVE_ONE_BYTE);
+                msgDataDemo.setMessageContent(null);
+                msgDataDemo.setCheckSumbit(ReceiveDataFrameDemoConstant.RECEIVE_DOUBLE_BYTE);
+                msgDataDemo.setMessageTail(ReceiveDataFrameDemoConstant.RECEIVE_FRAME_TAIL);
+
+                if (msgDataDemo != null) {
+                    SocketUtil.writeMsgDataDemo(dataOutputStream, msgDataDemo);
                 }
                 try {
                     Thread.sleep(socketHeartIntervalTime * 1000);

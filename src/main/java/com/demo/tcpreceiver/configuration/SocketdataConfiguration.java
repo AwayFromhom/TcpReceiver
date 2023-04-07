@@ -1,4 +1,4 @@
-//package com.demo.tcpreceiver.configuration;
+package com.demo.tcpreceiver.configuration;//package com.demo.tcpreceiver.configuration;
 //
 //import com.demo.tcpreceiver.data.service.SocketDataService;
 //import com.demo.tcpreceiver.data.service.impl.SocketDataServiceimpl;

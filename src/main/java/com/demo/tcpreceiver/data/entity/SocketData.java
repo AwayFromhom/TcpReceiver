@@ -18,4 +18,6 @@ public class SocketData implements Serializable {
     @DateTimeFormat
     public LocalDateTime time;
 
+    public Integer isAnalysis;
+
 }

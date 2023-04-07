@@ -1,4 +1,4 @@
-package com.demo.tcpreceiver.core.util;
+package com.demo.tcpreceiver.TCPservice.util;
 
 import java.io.IOException;
 import java.io.InputStream;

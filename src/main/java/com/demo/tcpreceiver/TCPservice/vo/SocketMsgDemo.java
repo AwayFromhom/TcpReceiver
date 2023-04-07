@@ -1,4 +1,4 @@
-package com.demo.tcpreceiver.service.vo;
+package com.demo.tcpreceiver.TCPservice.vo;
 
 import lombok.Data;
 

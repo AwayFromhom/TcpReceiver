@@ -1,9 +1,9 @@
-package com.demo.tcpreceiver.core.util;
+package com.demo.tcpreceiver.TCPservice.util;
 
-import com.demo.tcpreceiver.core.constant.ReceiveDataFrameConstant;
-import com.demo.tcpreceiver.core.constant.ReceiveDataFrameDemoConstant;
-import com.demo.tcpreceiver.service.vo.SocketMsgDemo;
-import com.demo.tcpreceiver.service.vo.SocketMsgVo;
+
+import com.demo.tcpreceiver.TCPservice.constant.ReceiveDataFrameDemoConstant;
+import com.demo.tcpreceiver.TCPservice.vo.SocketMsgDemo;
+
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -27,51 +27,14 @@ public class SocketUtil {
         }
     }
 
+
+
     /**
-     * 将封装好的SocketMsgVo返回到DataOutputStream,当做心跳包返回。
+     * 将封装好的SocketMsgDemo返回到DataOutputStream,当做心跳包返回。
      * @param dataOutputStream
-     * @param msgDataVo
+     * @param msgDataDemo
      * @throws IOException
      */
-    public static void writeMsgData(DataOutputStream dataOutputStream, SocketMsgVo msgDataVo) throws IOException {
-        /*msgDataVo.setFrameHeader(SocketMsgVo.RECEIVE_FRAME_HEADER);
-        msgDataVo.setLen(0);
-        msgDataVo.setBody(null);
-        msgDataVo.setFrameTail(SocketMsgVo.RECEIVE_FRAME_TAIL);*/
-        dataOutputStream.write(msgDataVo.getFrameHeader());
-        dataOutputStream.writeInt(msgDataVo.getLen());
-        if (msgDataVo.getBody() != null) {
-            dataOutputStream.write(msgDataVo.getBody());
-        }
-        dataOutputStream.write(msgDataVo.getFrameTail());
-        dataOutputStream.flush();
-    }
-
-    /**
-     * 接收消息存入SocketMsgVo
-     * @param dataInputStream
-     * @return
-     * @throws IOException
-     */
-    public static SocketMsgVo readMsgData(DataInputStream dataInputStream) throws IOException {
-        byte[] frameHeader = new byte[ReceiveDataFrameConstant.RECEIVE_FRAME_HEADER_LENGTH];
-        dataInputStream.read(frameHeader);
-        int len = dataInputStream.readInt();
-        byte[] body = new byte[len];
-        dataInputStream.read(body);
-        byte[] frameTail = new byte[ReceiveDataFrameConstant.RECEIVE_FRAME_TAIL_LENGTH];
-        dataInputStream.read(frameTail);
-        System.out.println("获取的数据长度为：" + len);
-        SocketMsgVo msgDataVo = new SocketMsgVo();
-        msgDataVo.setFrameHeader(frameHeader);
-        msgDataVo.setBody(body);
-        msgDataVo.setLen(len);
-        msgDataVo.setFrameTail(frameTail);
-        return msgDataVo;
-    }
-
-
-
     public static void writeMsgDataDemo(DataOutputStream dataOutputStream, SocketMsgDemo msgDataDemo) throws IOException {
 
         dataOutputStream.write(msgDataDemo.getMessageHeader());
@@ -96,6 +59,13 @@ public class SocketUtil {
         dataOutputStream.flush();
     }
 
+
+    /**
+     * 接收消息存入SocketMsgDemo
+     * @param dataInputStream
+     * @return
+     * @throws IOException
+     */
     public static SocketMsgDemo readMsgDataDemo(DataInputStream dataInputStream) throws IOException {
         byte[] messageHeader = new byte[ReceiveDataFrameDemoConstant.RECEIVE_Message_header_LENGTH];
         dataInputStream.read(messageHeader);

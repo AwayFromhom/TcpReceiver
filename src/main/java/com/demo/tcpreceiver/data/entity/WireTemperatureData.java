@@ -3,19 +3,25 @@ package com.demo.tcpreceiver.data.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
+import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * @author Herofancye
+ */
 @Data
-public class WsensorData implements Serializable {
+public class WireTemperatureData implements Serializable {
     public Integer id;
-    public int wsensorId;
-    public float temperature;
+    public String componentId;
+    public Integer unitSum;
+    public Integer unitNo;
+
     @TableField(fill = FieldFill.INSERT)
     @DateTimeFormat
-    public LocalDateTime time;
-
+    public LocalDateTime timeStamp;
+    public String lineTemperature;
 
 }

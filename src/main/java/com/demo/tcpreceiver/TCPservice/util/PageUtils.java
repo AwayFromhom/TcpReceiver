@@ -1,4 +1,4 @@
-//package com.demo.tcpreceiver.core.util;
+package com.demo.tcpreceiver.TCPservice.util;//package com.demo.tcpreceiver.core.util;
 //import com.github.pagehelper.PageInfo;
 //import com.demo.tcpreceiver.dto.PageResultDTO;
 //import com.demo.tcpreceiver.request.PageRequest;

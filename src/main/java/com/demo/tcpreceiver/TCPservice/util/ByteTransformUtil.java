@@ -1,4 +1,4 @@
-package com.demo.tcpreceiver.core.util;
+package com.demo.tcpreceiver.TCPservice.util;
 
 /**
  * @desc 字节码转换工具
@@ -72,10 +72,11 @@ public class ByteTransformUtil {
 
     /**
      * byte[] 转 int 高字节在前（高字节序）
+     *
      * @param b
      * @return
      */
-    public static int toInt(byte[] b){
+    public static Integer toInt(byte[] b){
         int res = 0;
         for(int i=0;i<b.length;i++){
             res += (b[i] & 0xff) << ((3-i)*8);

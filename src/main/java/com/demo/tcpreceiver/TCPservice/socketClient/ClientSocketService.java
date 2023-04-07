@@ -1,8 +1,8 @@
-package com.demo.tcpreceiver.service.socketClient;
+package com.demo.tcpreceiver.TCPservice.socketClient;
 
 
 import com.demo.tcpreceiver.configuration.ApplicationContextUtil;
-import com.demo.tcpreceiver.core.util.SocketUtil;
+import com.demo.tcpreceiver.TCPservice.util.SocketUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -106,12 +106,12 @@ public class ClientSocketService implements InitializingBean {
         return null;
     }
 
-    /**
-     * 测试
-     * @param args
-     */
-    public static void main(String[] args) {
-        ClientSocketService clientSocket = new ClientSocketService();
-        clientSocket.start();
-    }
+//    /**
+//     * 测试
+//     * @param args
+//     */
+//    public static void main(String[] args) {
+//        ClientSocketService clientSocket = new ClientSocketService();
+//        clientSocket.start();
+//    }
 }
